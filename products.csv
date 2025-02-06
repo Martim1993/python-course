@@ -1,0 +1,11 @@
+product_id,product_name,category,price,quantity
+1,Laptop,Electronics,800,10
+2,Smartphone,Electronics,600,25
+3,Tablet,Electronics,300,15
+4,Headphones,Accessories,50,50
+5,Keyboard,Accessories,40,30
+6,Mouse,Accessories,25,75
+7,Monitor,Electronics,150,20
+8,Chair,Furniture,85,5
+9,Desk,Furniture,120,7
+10,Bookshelf,Furniture,60,12
