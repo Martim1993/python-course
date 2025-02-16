@@ -1,0 +1,15 @@
+product_id,product_name,category,total_value
+1,Laptop,Electronics,8000.0
+2,Smartphone,Electronics,15000.0
+3,Tablet,Electronics,4500.0
+4,Headphones,Accessories,2500.0
+5,Keyboard,Accessories,1200.0
+6,Mouse,Accessories,1875.0
+7,Monitor,Electronics,3000.0
+8,Chair,Furniture,425.0
+9,Desk,Furniture,840.0
+10,Bookshelf,Furniture,720.0
+,,,
+,,Electronics,30500.0
+,,Accessories,5575.0
+,,Furniture,1985.0

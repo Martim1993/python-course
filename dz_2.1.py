@@ -10,11 +10,7 @@ class Book:  # Класс книги
         self.isbn = isbn
 
     def __str__(self):
-        title = self.title
-        author = self.author
-        year = self.year
-        isbn = self.isbn
-        return f"Название: {title}, Автор: {author}, Год: {year}, ISBN: {isbn}"
+        return f"Название: {self.title}, Автор: {self.author}, Год: {self.year}, ISBN: {self.isbn}"
 
 
 class Library: # Класс библиотеки
@@ -59,6 +55,7 @@ class Library: # Класс библиотеки
         print("Список книг в библиотеке:")
         for book in self.books:
             print(f"{book}")
+
 
 library = Library()
 
