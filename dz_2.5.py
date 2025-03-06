@@ -1,5 +1,3 @@
-# Посмотрите самый низ
-
 class IndexError(Exception):
     pass
 
