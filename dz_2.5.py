@@ -1,4 +1,4 @@
-
+# Посмотрите самый низ
 
 class IndexError(Exception):
     pass
@@ -8,7 +8,6 @@ class StatefulIterator:
     def __init__(self,
                  iterable):
         self.iterable = iterable
-        self.cache = {}
         self.index = 0
 
     def __iter__(self):
@@ -26,21 +25,23 @@ class StatefulIterator:
         while self.index < len(self.iterable):
             current_iterable = self.iterable[self.index]
             self.index -= n
+            if self.index < 0:
+                raise IndexError("Перемотка назад невозможна так как достигнуто начало списка")
             return current_iterable
-        raise IndexError("Перемотка назад невозможна так как достигнуто начало списка")
+        raise IndexError("Перемотка вперед невозможна так как достигнут конец списка")
 
     def forward(self,
                n: int):
         while self.index < len(self.iterable):
-            current_iterable = self.iterable[self.index]
             self.index += n
+            current_iterable = self.iterable[self.index]
             return current_iterable
         raise IndexError("Перемотка вперед невозможна так как достигнут конец списка")
 
     def reset(self):
         self.index = 0
         current_iterable = self.iterable[self.index]
-        return self.index
+        return current_iterable
 
     def current(self):
         if self.index == 0:
@@ -64,5 +65,4 @@ print(next(iterator))
 print(iterator.current())
 iterator.reset()
 print(iterator.current())
-print(iterator.forward(4))
 print(iterator.forward(4))
