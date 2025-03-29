@@ -1,37 +1,47 @@
-def log_function_call(func):
-    def wrapper(a, b, c=None):
-
-        print(f"Calling function: {func.__name__}")
-
-        if c is not None:
-            result = func(a, b, c)
-            print(f"Arguments: {a, b, c}")
-        else:
-            result = func(a, b)
-            print(f"Arguments: {a, b}")
-
-        print(f"Result: {result}\n")
-        return result
-    return wrapper
+import re
 
 
-@log_function_call
-def add(a, b):
-    return a + b
+def is_valid_email(email: str) -> bool:
+    pattern = r'^[a-zA-Z0-9]+[a-zA-Z0-9._-]*@[a-zA-Z0-9-]+\.[a-zA-Z0-9]+$'
+    return bool(re.fullmatch(pattern, email))
 
 
-@log_function_call
-def multiply(a, b, c):
-    return a * b * c
+print(is_valid_email("example@example.com"))
+print(is_valid_email("invalid-email@com"))
+print()
 
 
-add(2,3)
-multiply(1, 2, 3)
+def extract_urls(text: str) -> list:
+    pattern = r'(?:https?://|www\.)[a-zA-Z0-9.-]+(?:\/[a-zA-Z0-9.-]*)*'
+    urls = re.findall(pattern, text)
+    return urls
 
 
-def main():
-    add(2, 3)
-    multiply(1, 2, 3)
+text = "Visit our website at https://example.com or http://www.example.org for more info."
+print(extract_urls(text))
+print()
 
 
-main()
+def replace_date_format(text: str) -> str:
+    replaced_text = re.sub(
+        r'(\d{2})/(\d{2})/(\d{4})',
+        r'\3-\1-\2',
+        text
+    )
+    return replaced_text
+
+
+text = "The event will be held on 08/25/2024. Please RSVP by 07/30/2024."
+print(replace_date_format(text))
+print()
+
+
+def is_valid_phone_number(phone: str) -> bool:
+    pattern = r'^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$'
+    return bool(re.fullmatch(pattern, phone))
+
+print(is_valid_phone_number("(123) 456-7890"))
+print(is_valid_phone_number("123-456-7890"))
+print(is_valid_phone_number("123.456.7890"))
+print(is_valid_phone_number("1234567890"))
+print(is_valid_phone_number("123-4567-890"))
